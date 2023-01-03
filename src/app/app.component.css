@@ -1,0 +1,38 @@
+.heading {
+    color: #FF6E31;
+    margin: 6rem;
+}
+
+.heading-1 {
+    font-size: 3rem;
+    margin-bottom: 0;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-weight: 900;
+}
+
+.heading-2 {
+    margin-top: 0;
+    font-size: 2rem;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 900;
+}
+
+@media screen and (max-width: 769px) {
+    .heading {
+        margin: 4rem;
+        margin-left: 1.5rem;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .heading {
+        margin: 3rem;
+        margin-left: 1rem;
+        font-size: 0.6rem;
+    }
+
+    .heading-1 {
+        font-size: 1.1rem;
+    }
+}

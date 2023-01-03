@@ -1,0 +1,113 @@
+<div class="main">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="cont container">
+            <ul class="pe-2 pt-3 ps-3 d-flex justify-content-between col-lg-10">
+                <li class="d-flex me-4" (click)="changeCategory('ALL_EVENTS')">
+                    <img class="imgSrc" src="{{ setAllEvents }}" alt="" />
+                    <span [ngStyle]="{ color: color1 }">All Events</span>
+                </li>
+                <li class="d-flex me-4" (click)="changeCategory('WEBINAR')">
+                    <img class="imgSrc" src="{{ setWebEvents }}" alt="" />
+                    <span [ngStyle]="{ color: color2 }" class="hovering">Webinars</span>
+                </li>
+                <li class="d-flex me-4" (click)="changeCategory('CODING_EVENT')">
+                    <img class="imgSrc" src="{{ setCodEvents }}" alt="" />
+                    <span [ngStyle]="{ color: color2 }" class="hovering">Coding Events</span>
+                </li>
+                <li class="d-flex me-4" (click)="changeCategory('BOOTCAMP_EVENT')">
+                    <img class="imgSrc" src="{{ setBootEvents }}" alt="" />
+                    <span [ngStyle]="{ color: color4 }" class="hovering">Bootcamp Events</span>
+                </li>
+                <li class="d-flex me-4" (click)="changeCategory('WORKSHOP')">
+                    <img class="imgSrc" src="{{ setWorkEvents }}" alt="" />
+                    <span [ngStyle]="{ color: color5 }" class="hovering">Workshops</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <mat-divider></mat-divider>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="cont container">
+            <ul class="pe-2 pt-1 ps-3 pb-0 d-flex">
+                <li class="nav-item subcategory">
+                    <span [ngStyle]="{ color: colorSub1 }" (click)="changeSubCategory(typeSubCat1)" class="hovering">Upcoming</span>
+                </li>
+                <li class="nav-item subcategory">
+                    <div *ngIf="event_category == 'WEBINAR'">
+                        <span [ngStyle]="{ color: colorSub2 }" (click)="changeSubCategory(typeSubCat2)" class="hovering">Recorded</span>
+                    </div>
+                    <div *ngIf="event_category !== 'WEBINAR'">
+                        <span [ngStyle]="{ color: colorSub2 }" (click)="changeSubCategory(typeSubCat2)" class="hovering">Archived</span>
+                    </div>
+                </li>
+                <li class="nav-item subcategory">
+                    <div *ngIf="event_category !== 'CODING_EVENT'">
+                        <span [ngStyle]="{ color: colorSub3 }" (click)="changeSubCategory(typeSubCat3)" class="hovering">All Time
+                            Favourites</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <mat-divider></mat-divider>
+
+    <div class="row p-2 pt-4">
+        <div class="col-lg-9 d-flex flex-wrap justify-content-start">
+            <div *ngFor="let event of events" class="d-flex justify-content-center">
+                <app-event class="" eventName="{{ event['name'] }}" imgSrc="{{ event['cover_picture'] }}"
+                    value1="Starts On" value2="{{
+                event['event_start_time'] * 1000 | date: 'hh:mm aaa, dd MMM yyyy'
+              }}" value3="Entry Fee" value4="{{ event['fees'] === 0 ? 'Free' : event['fees'] }}" value5="Venue"
+                    value6="{{ event['venue'] }}" eventDescription="{{ event['short_desc'] }}"
+                    buttonValue="Register Now" registerLink="{{
+                'https://www.codingninjas.com/events/' + event['slug']
+              }}" regEndTime="{{
+                event['registration_end_time'] * 1000 | date: 'dd MMM, hh:mm aaa'
+              }}" regStatus="{{event['registration_status']}}" [tagList]="event['card_tags']"
+                    [topUsers]="event['registered_users']['top_users']"
+                    otherUsers="{{event['registered_users']['other_users_count']}}"
+                    showUsers="{{event['registered_users']['show_users_count']}}"></app-event>
+            </div>
+        </div>
+
+        <div class="col-lg-3 d-flex justify-content-start">
+            <app-tags (tagChange)="changeTag($event)"></app-tags>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-9 d-flex flex-row-reverse align-items-center">
+            <div *ngIf="curPage != totPages">
+                <button class="btn btn-md ms-1 text-light" style="background-color:#FF6E31" (click)="nextPage()">
+                    &gt;
+                </button>
+            </div>
+            <div *ngIf="curPage == totPages">
+                <button disabled="true" class="btn btn-md ms-1 text-light" style="background-color:#FF6E31"
+                    (click)="nextPage()">
+                    &gt;
+                </button>
+            </div>
+            <span> Page <input class="text-center" value="" style="width: 40px;" type="number" min="1"
+                    max="{{totPages}}" id="pageVal" name="pageVal" placeholder="{{ curPage }}"
+                    (keyup.enter)="functionPage()">
+                of {{ totPages }}</span>
+
+            <div *ngIf="curPage != 1">
+                <button class="btn btn-md me-1 text-light" style="background-color:#FF6E31" (click)="prevPage()">
+                    &lt;
+                </button>
+            </div>
+            <div *ngIf="curPage == 1">
+                <button disabled="true" class="btn btn-md me-1 text-light" style="background-color:#FF6E31"
+                    (click)="prevPage()">
+                    &lt;
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 2px;"></div>

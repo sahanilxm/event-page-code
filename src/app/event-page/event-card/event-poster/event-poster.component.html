@@ -1,0 +1,14 @@
+<div class=" banner-container">
+    <img class="card-img" src={{imgSrc}} alt="Card image cap">
+    <div *ngIf="regStatus!='PAST'" class="register-badge h6 ">
+        <span class="p-2 text-2 m-1 mb-2 rounded">
+            <svg height="17" width="16">
+                <circle cx="7" cy="7" r="4" fill="#ff0000" stroke="none">
+                    <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" begin="0.1" />
+                </circle>
+            </svg>
+            Registration <strong>Open</strong> till <strong>{{
+                regEndTime
+                }}</strong></span>
+    </div>
+</div>
