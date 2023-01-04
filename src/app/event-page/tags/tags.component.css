@@ -1,7 +1,7 @@
 .cursor {
-    color: #fa7328;
+    color: #FF6E31;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 1.2rem;
     cursor: pointer;
 }
 
@@ -9,7 +9,7 @@
     font-weight: 700;
     font-size: 16px;
     text-transform: uppercase;
-    color: #616161;
+    color: #6B728E;
     margin-bottom: 14px;
     letter-spacing: 0.078rem;
 }
