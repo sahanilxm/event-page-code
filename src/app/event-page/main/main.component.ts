@@ -39,15 +39,15 @@ export class MainComponent implements OnInit {
   type4 = 'BOOTCAMP_EVENT';
   type5 = 'WORKSHOP';
 
+  typeSubCat1 = "Upcoming";
+  typeSubCat2 = "Archived";
+  typeSubCat3 = "All Time Favorites";
+
   color1 = '#FA7328';
   color2 = 'grey';
   color3 = 'grey';
   color4 = 'grey';
   color5 = 'grey';
-
-  typeSubCat1 = "Upcoming";
-  typeSubCat2 = "Archived";
-  typeSubCat3 = "All Time Favorites";
 
   colorSub1 = '#FA7328';
   colorSub2 = "grey";
