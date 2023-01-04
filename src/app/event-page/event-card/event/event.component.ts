@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.css']
 })
-export class EventComponent implements OnInit{
+export class EventComponent implements OnInit {
   @Input() eventName!: string;
   @Input() imgSrc!: string;
   @Input() value1!: string;
