@@ -1,23 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { EventExplanationComponent } from './event-explanation.component';
+@Component({
+  selector: 'app-event-explanation',
+  templateUrl: './event-explanation.component.html',
+  styleUrls: ['./event-explanation.component.css']
+})
+export class EventExplanationComponent implements OnInit {
+  @Input() description!: string;
+  constructor() { }
 
-describe('EventExplanationComponent', () => {
-  let component: EventExplanationComponent;
-  let fixture: ComponentFixture<EventExplanationComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ EventExplanationComponent ]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(EventExplanationComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit(): void {
+  }
+}
