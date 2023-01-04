@@ -222,4 +222,16 @@ export class MainComponent implements OnInit {
   onSearchTextEntered(searchvalue: string) {
     this.searchText = searchvalue;
   }
+
+  count: number= 0;
+
+  counterFun(){
+    this.count+=1;
+    console.log(this.count);
+  }
+
+  getCounterFun(): number{
+    return this.count;
+  }
+
 }
