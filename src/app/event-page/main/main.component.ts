@@ -1,10 +1,9 @@
 import { Input, Component, OnInit,} from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-
 
 @Component({
   selector: 'app-main',
@@ -14,7 +13,6 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 
 export class MainComponent implements OnInit{
-  @Input() eventName!: string;
 
   faLeft = faArrowLeft;
   faRight = faArrowRight;
@@ -220,7 +218,6 @@ export class MainComponent implements OnInit{
   
 
   f(event:any):string{
-    console.log(event['name']);
     return event['name'];
   }
    
@@ -228,6 +225,5 @@ export class MainComponent implements OnInit{
 
     onSearchTextEntered(searchvalue: string){
       this.searchText=searchvalue;
-      console.log(this.searchText);
     }
 }
