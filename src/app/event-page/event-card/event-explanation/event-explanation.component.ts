@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './event-explanation.component.html',
   styleUrls: ['./event-explanation.component.css']
 })
-export class EventExplanationComponent implements OnInit{
+export class EventExplanationComponent implements OnInit {
   @Input() description!: string;
   constructor() { }
 
