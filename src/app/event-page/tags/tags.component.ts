@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   templateUrl: './tags.component.html',
   styleUrls: ['./tags.component.css']
 })
-export class TagsComponent {
+export class TagsComponent implements OnInit{
   tags = [];
   tagsAll = [];
   tags2 = [];
