@@ -1,0 +1,13 @@
+.search-name{
+    color: #FF6E31;
+    font-size: larger;
+    font-weight: 600;
+}
+
+.search{
+    color: #243763;
+    border-color: #243763;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+}
