@@ -8,9 +8,9 @@ describe('EventPosterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EventPosterComponent ]
+      declarations: [EventPosterComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(EventPosterComponent);
     component = fixture.componentInstance;
