@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit,} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
@@ -14,8 +14,11 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 
 export class MainComponent implements OnInit{
+  @Input() eventName!: string;
+
   faLeft = faArrowLeft;
   faRight = faArrowRight;
+  mainColor = "#FA7328";
   allEventsSel = 'assets/images/all-events-selected.svg';
   allEventsUnsel = 'assets/images/all-events-unselected.svg';
   setAllEvents = 'assets/images/all-events-selected.svg';
@@ -32,6 +35,12 @@ export class MainComponent implements OnInit{
   workEventsUnsel = 'assets/images/workshop_unselected.png';
   setWorkEvents = 'assets/images/workshop_unselected.png';
 
+  type1 = 'ALL_EVENTS';
+  type2 = 'WEBINAR';
+  type3 = 'CODING_EVENT';
+  type4 = 'BOOTCAMP_EVENT';
+  type5 = 'WORKSHOP';
+
   color1 = '#FA7328';
   color2 = 'grey';
   color3 = 'grey';
@@ -46,7 +55,9 @@ export class MainComponent implements OnInit{
   colorSub2 = "grey";
   colorSub3 = "grey";
 
+
   preSetCat = 'ALL_EVENTS';
+
 
   private apiUrl = "https://api.codingninjas.com/api/v3/events";
   event_category = "ALL_EVENTS";
@@ -63,8 +74,6 @@ export class MainComponent implements OnInit{
   btn2 = "enabled";
   totPages = 1;
   curPage = 1;
-  pageVal = "";
-
 
 
   constructor(private http: HttpClient) { }
@@ -86,11 +95,20 @@ export class MainComponent implements OnInit{
 
   callApi() {
     var api = this.makeApi();
-    this.http.get(api).subscribe((data: any) => {
+    this.http.get(api).
+      pipe(
+          map(data => {
+            return data;
+          }), catchError( error => {
+            return throwError( 'Something went wrong!' );
+          })
+       )
+      .subscribe((data: any) => {
         this.eventsObj = data.data.events;
         this.events = JSON.parse(JSON.stringify(this.eventsObj));
         this.totPages = data.data.page_count;
         this.curPage = (this.offset / 20) + 1;
+        
       });
   }
 
@@ -99,16 +117,16 @@ export class MainComponent implements OnInit{
   }
 
   updatePreEvent() {
-    if (this.preSetCat === "ALL_EVENTS") {
+    if (this.preSetCat === this.type1) {
       this.setAllEvents = this.allEventsUnsel;
       this.color1 = "grey";
-    } else if (this.preSetCat === "WEBINAR") {
+    } else if (this.preSetCat === 'WEBINAR') {
       this.setWebEvents = this.webEventsUnsel;
       this.color2 = "grey";
-    } else if (this.preSetCat === "CODING_EVENT") {
+    } else if (this.preSetCat === 'CODING_EVENT') {
       this.setCodEvents = this.codEventsUnsel;
       this.color3 = "grey";
-    } else if (this.preSetCat === "BOOTCAMP_EVENT") {
+    } else if (this.preSetCat === 'BOOTCAMP_EVENT') {
       this.setBootEvents = this.bootEventsUnsel;
       this.color4 = "grey";
     } else {
@@ -118,18 +136,18 @@ export class MainComponent implements OnInit{
   }
 
 
-  changeCategory(type:string) {
+  changeCategory(type: string) {
     this.updatePreEvent();
-    if (type === "ALL_EVENTS") {
+    if (type === this.type1) {
       this.setAllEvents = this.allEventsSel;
       this.color1 = "#FA7328";
-    } else if (type === "WEBINAR") {
+    } else if (type === 'WEBINAR') {
       this.setWebEvents = this.webEventsSel;
       this.color2 = "#FA7328";
-    } else if (type === "CODING_EVENT") {
+    } else if (type === 'CODING_EVENT') {
       this.setCodEvents = this.codEventsSel;
       this.color3 = "#FA7328";
-    } else if (type === "BOOTCAMP_EVENT") {
+    } else if (type === 'BOOTCAMP_EVENT') {
       this.setBootEvents = this.bootEventsSel;
       this.color4 = "#FA7328";
     } else {
@@ -143,9 +161,9 @@ export class MainComponent implements OnInit{
   }
 
   updateSubCat() {
-    if (this.event_sub_category === "Upcoming") {
+    if (this.event_sub_category == this.typeSubCat1) {
       this.colorSub1 = "grey";
-    } else if (this.event_sub_category === "Archived") {
+    } else if (this.event_sub_category == this.typeSubCat2) {
       this.colorSub2 = "grey";
     } else {
       this.colorSub3 = "grey";
@@ -154,12 +172,12 @@ export class MainComponent implements OnInit{
 
   changeSubCategory(type: string) {
     this.updateSubCat();
-    if (type === "Upcoming") {
-      this.colorSub1 = "#FF6E31";
-    } else if (type === "Archived") {
-      this.colorSub2 = "#FF6E31";
+    if (type == this.typeSubCat1) {
+      this.colorSub1 = "#FA7328";
+    } else if (type == this.typeSubCat2) {
+      this.colorSub2 = "#FA7328";
     } else {
-      this.colorSub3 = "#FF6E31";
+      this.colorSub3 = "#FA7328";
     }
     this.event_sub_category = type;
     this.offset = 0;
@@ -199,4 +217,17 @@ export class MainComponent implements OnInit{
       document.documentElement.scrollTop = 0;
     }
   }
+  
+
+  f(event:any):string{
+    console.log(event['name']);
+    return event['name'];
+  }
+   
+  searchText: string ='';
+
+    onSearchTextEntered(searchvalue: string){
+      this.searchText=searchvalue;
+      console.log(this.searchText);
+    }
 }
