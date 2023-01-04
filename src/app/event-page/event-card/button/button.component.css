@@ -1,7 +1,7 @@
 .btn {
-    background: linear-gradient(90deg, #FF6E31, #ee9f15);
+    background: linear-gradient(90deg, #FF6E31, #FFB26B);
     border-radius: 3px;
-    color: #fff;
+    color: white;
     width: 132px;
     height: 32px;
     border: none;
@@ -12,7 +12,7 @@
     text-transform: uppercase;
 }
 
-.btn:hover{
+.btn:hover {
     color: #243763;
     font-weight: 600;
 }
