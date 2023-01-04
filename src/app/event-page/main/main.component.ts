@@ -1,5 +1,5 @@
-import { Input, Component, OnInit,} from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { Input, Component, OnInit, } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 })
 
 
-export class MainComponent implements OnInit{
+export class MainComponent implements OnInit {
 
   faLeft = faArrowLeft;
   faRight = faArrowRight;
@@ -53,11 +53,7 @@ export class MainComponent implements OnInit{
   colorSub2 = "grey";
   colorSub3 = "grey";
 
-
   preSetCat = 'ALL_EVENTS';
-
-
-  private apiUrl = "https://api.codingninjas.com/api/v3/events";
   event_category = "ALL_EVENTS";
   event_sub_category = "Upcoming";
   tags: Array<string> = [];
@@ -77,6 +73,8 @@ export class MainComponent implements OnInit{
   constructor(private http: HttpClient) { }
 
 
+  private apiUrl = "https://api.codingninjas.com/api/v3/events";
+
   makeApi(): string {
     var api = this.apiUrl + "?event_category=" + this.event_category + "&event_sub_category=" + this.event_sub_category + "&tag_list=";
     for (let i = 0; i < this.tags.length; i++) {
@@ -95,18 +93,18 @@ export class MainComponent implements OnInit{
     var api = this.makeApi();
     this.http.get(api).
       pipe(
-          map(data => {
-            return data;
-          }), catchError( error => {
-            return throwError( 'Something went wrong!' );
-          })
-       )
+        map(data => {
+          return data;
+        }), catchError(error => {
+          return throwError('Something went wrong!');
+        })
+      )
       .subscribe((data: any) => {
         this.eventsObj = data.data.events;
         this.events = JSON.parse(JSON.stringify(this.eventsObj));
         this.totPages = data.data.page_count;
         this.curPage = (this.offset / 20) + 1;
-        
+
       });
   }
 
@@ -182,7 +180,6 @@ export class MainComponent implements OnInit{
     this.callApi();
   }
 
-
   changeTag(tag: string) {
     const ind = this.tags.indexOf(tag);
     if (ind > -1) {
@@ -215,15 +212,14 @@ export class MainComponent implements OnInit{
       document.documentElement.scrollTop = 0;
     }
   }
-  
 
-  f(event:any):string{
+  f(event: any): string {
     return event['name'];
   }
-   
-  searchText: string ='';
 
-    onSearchTextEntered(searchvalue: string){
-      this.searchText=searchvalue;
-    }
+  searchText: string = '';
+
+  onSearchTextEntered(searchvalue: string) {
+    this.searchText = searchvalue;
+  }
 }
