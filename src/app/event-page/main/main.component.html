@@ -61,20 +61,25 @@
     <div class="row p-2 pt-4">
         <div class="col-lg-9 d-flex flex-wrap justify-content-start">
             <p class="no-event" *ngIf="events.length==0">NO EVENTS FOUND</p>
+            <div class="search-container" *ngIf="events.length!=0" style="width: 100%; text-align: center;">
+                <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+            </div>
             <div *ngFor="let event of events" class="d-flex justify-content-center">
-                <app-event class="" eventName="{{ event['name'] }}" imgSrc="{{ event['cover_picture'] }}"
-                    value1="Starts On" value2="{{
-                    event['event_start_time'] * 1000 | date: 'hh:mm aaa, dd MMM yyyy'
-                  }}" value3="Entry Fee" value4="{{ event['fees'] === 0 ? 'Free' : event['fees'] }}" value5="Venue"
-                    value6="{{ event['venue'] }}" eventDescription="{{ event['short_desc'] }}"
-                    buttonValue="Register Now" registerLink="{{
-                    'https://www.codingninjas.com/events/' + event['slug']
-                  }}" regEndTime="{{
-                    event['registration_end_time'] * 1000 | date: 'dd MMM, hh:mm aaa'
-                  }}" regStatus="{{event['registration_status']}}" [tagList]="event['card_tags']"
-                    [topUsers]="event['registered_users']['top_users']"
-                    otherUsers="{{event['registered_users']['other_users_count']}}"
-                    showUsers="{{event['registered_users']['show_users_count']}}"></app-event>
+                <div *ngIf="f(event).toLowerCase().includes(searchText) ">
+                    <app-event class="" eventName="{{ event['name'] }}" imgSrc="{{ event['cover_picture'] }}" value1="Starts On" value2="{{
+                        event['event_start_time'] * 1000 | date: 'hh:mm aaa, dd MMM yyyy'
+                    }}" value3="Entry Fee" value4="{{ event['fees'] === 0 ? 'Free' : event['fees'] }}" value5="Venue"
+                        value6="{{ event['venue'] }}" eventDescription="{{ event['short_desc'] }}"
+                        buttonValue="Register Now" registerLink="{{
+                        'https://www.codingninjas.com/events/' + event['slug']
+                    }}" regEndTime="{{
+                        event['registration_end_time'] * 1000 | date: 'dd MMM, hh:mm aaa'
+                    }}" regStatus="{{event['registration_status']}}" [tagList]="event['card_tags']"
+                        [topUsers]="event['registered_users']['top_users']"
+                        otherUsers="{{event['registered_users']['other_users_count']}}"
+                        showUsers="{{event['registered_users']['show_users_count']}}">
+                    </app-event>
+                </div>
             </div>
         </div>
         <div class="col-lg-3 d-flex justify-content-start">
