@@ -10,11 +10,9 @@ import { TagItemComponent } from './event-page/tag-item/tag-item.component';
 import { ButtonComponent } from './event-page/event-card/button/button.component';
 import { EventComponent } from './event-page/event-card/event/event.component';
 import { EventPosterComponent } from './event-page/event-card/event-poster/event-poster.component';
-import { EventDetailsComponent } from './event-page/event-card/event-details/event-details.component';
 import { EventExplanationComponent } from './event-page/event-card/event-explanation/event-explanation.component';
 import { UsersComponent } from './event-page/event-card/users/users.component';
 import { HttpClientModule } from '@angular/common/http';
-
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -48,6 +46,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SearchComponent } from './event-page/event-card/search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -59,9 +59,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ButtonComponent,
     EventComponent,
     EventPosterComponent,
-    EventDetailsComponent,
     EventExplanationComponent,
-    UsersComponent
+    UsersComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +101,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSortModule,
     MatPaginatorModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
