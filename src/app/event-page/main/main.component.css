@@ -41,6 +41,16 @@ span {
     font-family: 'Quicksand', sans-serif;
 }
 
+.no-event{
+    display: block;
+    font-size: 100px;
+    width: 100%;
+    margin: auto auto;
+    text-align: center;
+    color: #FF6E31;
+    font-family: 'Teko', sans-serif;
+}
+
 .hovering:hover,.hovering:active{
     font-size: 1.3rem;
 }
