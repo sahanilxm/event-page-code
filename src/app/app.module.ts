@@ -11,7 +11,6 @@ import { ButtonComponent } from './event-page/event-card/button/button.component
 import { EventComponent } from './event-page/event-card/event/event.component';
 import { EventPosterComponent } from './event-page/event-card/event-poster/event-poster.component';
 import { EventExplanationComponent } from './event-page/event-card/event-explanation/event-explanation.component';
-import { UsersComponent } from './event-page/event-card/users/users.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -60,7 +59,6 @@ import { FormsModule } from '@angular/forms';
     EventComponent,
     EventPosterComponent,
     EventExplanationComponent,
-    UsersComponent,
     SearchComponent
   ],
   imports: [
