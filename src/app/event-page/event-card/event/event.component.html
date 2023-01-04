@@ -24,17 +24,23 @@
         </div>
 
     </div>
-    <div *ngIf="showUsers=='true'" class="d-flex justify-content-between align-items-center p-1 border-top">
+    <hr style="margin-bottom: 0;">
+    <div *ngIf="showUsers=='true'" class="d-flex justify-content-between align-items-center p-1">
         <div>
             <app-event-registered-users *ngFor="let user of topUsers" imgSrc="{{user['image_url']}}"
                 name="{{user['name']}}" otherUsers={{otherUsers}} regStatus={{regStatus}}></app-event-registered-users>
-            <div class="d-flex">
+            <div class="d-flex" style="margin-bottom: 0;">
                 <p class="registered-para">and <span class="users">{{otherUsers}}</span> others
                     <span *ngIf="regStatus=='PAST'"> participated.</span>
                     <span *ngIf="regStatus!='PAST'">are participating.</span>
                 </p>
             </div>
         </div>
+        <div>
+            <app-button *ngIf=" regStatus!='PAST' " value={{buttonValue}} link={{registerLink}}></app-button>
+        </div>
     </div>
-    <app-button *ngIf=" regStatus!='PAST' " value={{buttonValue}} link={{registerLink}}></app-button>
+    <div *ngIf="showUsers=='false'">
+        <app-button *ngIf=" regStatus!='PAST' " value={{buttonValue}} link={{registerLink}}></app-button>
+    </div>
 </div>
