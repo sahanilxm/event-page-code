@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './event-page/main/main.component';
-import { EventRegisteredUsersComponent } from './event-page/event-registered-users/event-registered-users.component';
+import { EventRegisteredUsersComponent } from './event-page/event-card/event-registered-users/event-registered-users.component';
 import { TagsComponent } from './event-page/tags/tags.component';
 import { TagItemComponent } from './event-page/tag-item/tag-item.component';
 import { ButtonComponent } from './event-page/event-card/button/button.component';
