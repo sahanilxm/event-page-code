@@ -1,4 +1,4 @@
-import { User } from './../../../userlist';
+import { User } from './../../../user-list';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.css']
 })
-export class EventComponent implements OnInit {
+export class EventComponent implements OnInit{
   @Input() eventName!: string;
   @Input() imgSrc!: string;
   @Input() value1!: string;
