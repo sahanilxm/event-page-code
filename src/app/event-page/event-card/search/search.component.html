@@ -1,2 +1,2 @@
 <span class="search-name">Search: </span>
-<input type="text" [(ngModel)]="enteredSearchValue" (input)='onSearchTextChanged()' class="search" placeholder="Search Event..">
+<input type="text" class="search" placeholder="Search Event.." (input)="onSearchTextChanged()" [(ngModel)]="enteredSearchValue">
