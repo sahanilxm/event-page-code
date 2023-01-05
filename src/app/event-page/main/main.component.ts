@@ -10,10 +10,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-
-
-export class MainComponent implements OnInit {
-
+export class MainComponent implements OnInit{
   faLeft = faArrowLeft;
   faRight = faArrowRight;
   mainColor = "#FA7328";
@@ -222,16 +219,5 @@ export class MainComponent implements OnInit {
   onSearchTextEntered(searchvalue: string) {
     this.searchText = searchvalue;
   }
-
-  count: number= 0;
-
-  counterFun(){
-    this.count+=1;
-    console.log(this.count);
-  }
-
-  getCounterFun(): number{
-    return this.count;
-  }
-
+  
 }
