@@ -26,16 +26,24 @@
 
 @media screen and (min-width: 769px) {
     .card {
-        max-width: 36.659vw;
+        max-width: 100vw;
     }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1085px) {
     .card {
-        max-width: 29.725vw;
+        max-width: 25.725vw;
     }
 
 }
+
+@media screen and (min-width: 1290px) {
+    .card {
+        max-width: 27.725vw;
+    }
+
+}
+
 
 @media screen and (max-width: 768px) {
     .card {
