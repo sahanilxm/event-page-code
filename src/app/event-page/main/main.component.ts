@@ -191,6 +191,7 @@ export class MainComponent implements OnInit{
   prevPage() {
     this.offset -= 20;
     this.callApi();
+    document.documentElement.scrollTop = 0;
   }
 
   nextPage() {
